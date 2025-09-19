@@ -143,7 +143,7 @@ $values = $pdo->query("SELECT * FROM about_values ORDER BY sort ASC, id ASC")
     <!-- ================= CORE VALUES ================= -->
     <section class="values-block">
       <div class="values-container">
-        <h2 class="values-title">OUR CORE VALUES</h2>
+        <h2 class="values-title">CORE VALUES</h2>
         <p class="values-subtitle">
           At Paramount Development Group, our values guide every decision and define how we build lasting impact for investors, partners, and communities.
         </p>
