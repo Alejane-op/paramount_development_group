@@ -1,0 +1,132 @@
+:root{
+  --nav-h: 72px;
+  --border: #cfd6c7;        /* thin grey line */
+  --border-strong: #b7bfaa; /* stronger on scroll */
+  --link: #25321f;          /* dark green text */
+  --muted: #364025;         /* idle link */
+  --underline: #364025;     /* moving underline */
+}
+
+*{ box-sizing:border-box; }
+
+/* ===== Full-bleed sticky wrapper ===== */
+.navbar-wrap{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); /* full-bleed trick */
+}
+
+/* ===== Bar ===== */
+.navbar{
+  position: relative;        /* for ::after */
+  max-width: 100%;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 100px;
+  background: transparent;   /* start transparent */
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+
+/* Stronger style when scrolled */
+.navbar.scrolled{
+  background:#fff; /* turn white */
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+/* Full-bleed grey line under the bar */
+.navbar::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:1px;
+  background: var(--border);
+  transition: background-color .3s ease;
+}
+.navbar.scrolled::after{
+  background: var(--border-strong);
+}
+
+/* Brand */
+.nav-brand{
+  display:flex; align-items:center; gap:12px; min-width:0;
+  text-decoration:none; color:#111;
+}
+.nav-brand img{ width: 250px; height:auto; display:block; }
+.nav-brand span{ display:none; }
+
+/* Desktop links (right-aligned) */
+.nav-links{
+  position:relative;
+  display:flex; align-items:stretch; justify-content:flex-end; gap:28px;
+}
+.nav-links a{
+  position:relative;
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:0 10px;
+  color:var(--muted);
+  text-decoration:none;
+  font:400 17px/var(--nav-h) Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  letter-spacing:.01em; white-space:nowrap;
+  transition:color .2s ease;
+}
+.nav-links a:hover,
+.nav-links a.is-active{ color:var(--link); }
+
+/* Short, rounded moving underline */
+.magic-line{
+  position:absolute; bottom:18px; height:2px;
+  background:var(--underline); border-radius:6px;
+  transition:transform .28s ease, width .28s ease, left .28s ease, opacity .2s ease;
+  opacity:0;
+}
+
+/* Hamburger */
+.hamburger{
+  display:none; width:36px; height:36px; border:0; background:transparent; cursor:pointer;
+}
+.hamburger .bar{
+  width:22px; height:2px; background:#25321f; display:block; margin:5px auto;
+  transition:transform .25s ease, opacity .2s ease;
+}
+.hamburger[aria-expanded="true"] .bar:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.hamburger[aria-expanded="true"] .bar:nth-child(2){ opacity:0; }
+.hamburger[aria-expanded="true"] .bar:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== Mobile dropdown (also full-bleed) ===== */
+.mobile-panel{
+  display:none;
+  background: transparent;     /* stays transparent (can change if you want) */
+  width: 100vw;
+  margin-left: calc(50% - 50vw); /* full-bleed like the bar */
+  border-bottom: 1px solid var(--border); /* continue the grey line under menu */
+  transition: background-color .3s ease, border-color .3s ease;
+}
+/* If you also want it to turn white when scrolled, uncomment:
+.navbar.scrolled + .mobile-panel{ background:#fff; border-color: var(--border-strong); }
+*/
+
+.mobile-panel-inner{
+  padding: 8px 28px 16px; display:grid; gap:4px;
+}
+.mobile-link{
+  color:var(--link); text-decoration:none;
+  font:600 16px/44px Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  border-radius:8px; padding:0 10px;
+}
+.mobile-link.is-active{ background:#a7af86; color:#1d2413; }
+.mobile-link:hover{ background:rgba(46,59,35,.08); }
+
+/* Responsive */
+@media (max-width: 1200px){
+  .nav-brand img{ width: 160px; }
+}
+@media (max-width: 960px){
+  .nav-links{ display:none; }
+  .hamburger{ display:block; }
+  .nav-brand img{ width: 140px; }
+}

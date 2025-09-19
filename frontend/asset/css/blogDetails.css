@@ -1,0 +1,130 @@
+/* blogDetails.css (scoped) */
+.blog-details{
+  --olive:#364025;
+  --olive-2:#899064;
+  --text:#404040;
+  --muted:#6B6B6B;
+  --container:1150px;
+  --radius:10px;
+  font-family:Poppins, sans-serif;
+  color:#222;
+  background:#fff; /* affects only inside .blog-details */
+}
+
+/* layout wrapper */
+.blog-details .bd-wrap{
+  max-width:calc(var(--container) + 48px);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* crumb */
+.blog-details .bd-crumb{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--olive)!important;
+  font-size:15px;
+  margin:18px 0;
+}
+.blog-details .bd-crumb a{ color:var(--olive); text-decoration:none }
+.blog-details .bd-crumb a:hover{ color:var(--olive-2) }
+
+/* author + meta */
+.blog-details .bd-author{ display:flex; align-items:center; gap:12px }
+.blog-details .bd-author img{
+  border: 1px solid #dedede;
+  width:40px; height:40px; border-radius:50%;
+  object-fit: cover; /* ensures the image covers the circle */ object-position: .3px -1px; /* keeps it centered inside */
+}
+.blog-details .bd-author strong{ font-weight:600 }
+.blog-details .bd-author small{ display:block; color:#888 }
+
+.blog-details .bd-meta-row{
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid #eee; border-bottom:1px solid #eee;
+  padding:16px 0; margin-top: 12px; margin-bottom: 12px;
+}
+.blog-details .bd-actions{ display:flex; gap:18px; align-items:center }
+.blog-details .bd-stat{ display:inline-flex; align-items:center; gap:10px; color:#666; font-size:14px }
+.blog-details .bd-share{ display:flex; gap:20px; color:#666 }
+.blog-details .bd-share a{ color:inherit; text-decoration:none;}
+.blog-details .bd-share a:hover{ color:#000 }
+
+.blog-details .bd-share i{
+  width: 20px;      /* you can adjust this */
+  height: 20px;     /* you can adjust this */
+  font-size: 20px;  /* controls the glyph size itself */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* icons inside blog-details (scoped) */
+.blog-details .bd-actions i {
+  width: 20px;      /* you can adjust this */
+  height: 20px;     /* you can adjust this */
+  font-size: 20px;  /* controls the glyph size itself */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* typography (scoped) */
+.blog-details .bd-wrap h1 {
+  color: var(--olive);
+  font-size:30px; font-weight:600; line-height:1.3;
+  margin:24px 0 20px; text-align:center;
+}
+
+.blog-details .bd-content{
+  margin:12px 0;
+  color:#555; line-height:1.9;
+  font-size:16px; font-weight:300;
+  text-align:justify;
+}
+
+/* imagery + content width */
+.blog-details .bd-hero,
+.blog-details .bd-hero-2{
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:0 auto 18px;
+}
+.blog-details .bd-hero-2{ margin:28px auto }
+.blog-details .bd-hero img,
+.blog-details .bd-hero-2 img{ width:100%; height:auto; display:block }
+
+.blog-details .bd-content{ max-width:1200px; margin:0 auto }
+
+/* spacer (clear fixed footer if any) */
+.blog-details .bd-after{ height:40px }
+
+/* responsive tweaks */
+@media (max-width: 768px){
+  .blog-details h1, .blog-details h2{ font-size:28px }
+  .blog-details h3{ font-size:19px }
+  .blog-details p{ font-size:16px }
+  .blog-details .bd-meta-row{ flex-wrap:wrap; gap:10px }
+}
+@media (max-width: 480px){
+  .blog-details h1, .blog-details h2{ font-size:26px }
+  .blog-details h3{ font-size:18px }
+}
+
+html { overflow-x: visible; }   /* ayaw i-hidden ang viewport */
+body { margin:0; padding:0; width:100%; overflow-x: hidden; }  /* supress overflow sa body lang */
+
+/* Make sure bold/italic from CKEditor shows */
+.bd-content strong,
+.bd-content b { font-weight: 700; }
+
+.bd-content em,
+.bd-content i { font-style: italic; }
+
+/* Optional: headings from CKEditor */
+.bd-content h1 { font-size: 2rem; line-height: 1.25; margin: 1.2em 0 .6em; }
+.bd-content h2 { font-size: 1.6rem; line-height: 1.3;  margin: 1.1em 0 .6em; }
+.bd-content h3 { font-size: 1.3rem; line-height: 1.35; margin: 1em 0 .5em; }
+.bd-content p  { margin: 0 0 1em; }
+

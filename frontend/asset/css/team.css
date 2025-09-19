@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #222;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Wrapper */
+.team-section {
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Header */
+.team-header {
+  font-size: 30px;
+  font-weight: 600;
+  color: #364025;
+  text-transform: uppercase;
+  line-height: 1.9;
+  margin-bottom: 1px;
+}
+.team-subheader {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(64,64,64,0.8);
+}
+
+/* Card */
+.team-card {
+  width: 1169px;
+  height: 550px;
+  background: #fff;
+  margin: 0 auto 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 70px;
+}
+.team-card img {
+  width: 350px;
+  height: 470px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.team-info {
+  flex: 1;
+  text-align: left;
+}
+.team-info h2 {
+  font-size: 35px;
+  font-weight: 500;
+  color: #364025;
+  margin: 0 0 10px;
+}
+.team-info h3 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 15px;
+  color: rgba(64,64,64,0.8);
+  margin: 0 0 20px;
+}
+.team-info p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(64,64,64,0.8);
+  text-align: justify;
+}
+
+/* ===== Scroll fade utilities (GLOBAL) ===== */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+.reveal.in{
+  opacity: 1;
+  transform: translateY(0);
+}
+.no-fade, .no-fade *{
+  transition: none !important;
+  opacity: initial !important;
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ---- optional: subtle stagger per card ---- */
+.team-card{ transition-delay: calc(var(--i, 0) * 120ms); }
+

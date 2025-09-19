@@ -1,0 +1,265 @@
+:root{
+  --olive:#364025;
+  --olive-2:#899064;
+  --text:#404040;
+  --muted:#6B6B6B;
+  --cream:#ECDDC4;
+  --brown:#4B3D1A;
+  --container:1189px;               /* matches the card width in your mock */
+}
+
+/* base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Poppins, sans-serif;background:#fff;color:var(--text);line-height:1.6}
+
+/* simple center container with same width as the form card */
+.container{
+  width:var(--container);
+  max-width:100%;    /* keep same side gutters as image */
+  margin:0 auto;
+}
+
+/* top headline block */
+.page-head{
+  margin:30px auto 40px;             /* distance from navbar to headline */
+  text-align:center;
+  width:1049px;                       /* same text width as image */
+  max-width:calc(100% - 2*174px);
+}
+.page-head h1{
+  margin:0;
+  font-weight:600;
+  font-size:30px;
+  line-height:60px;
+  text-transform:none;
+  color:var(--text);
+}
+.page-head .accent{ color:var(--olive-2); }
+.page-sub {
+  margin: 3px auto 0;
+  max-width: 850px;   /* 🔧 adjust width here */
+  font-size: 16px;
+  line-height: 1.9;
+  font-weight: 400;
+  color: rgba(64,64,64,.8);
+  text-align: center; /* keep centered */
+}
+
+
+/* hero image (exact 503px height) with bottom dark-olive gradient */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 550px;   /* 👈 increase from 400px → 550px or any value you like */
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1; /* image layer */
+}
+
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#364025;
+  z-index: 2; /* gradient layer */
+  opacity: 80%;
+}
+
+
+/* Give space below the card */
+.card-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: -380px;   /* keep overlap */
+  margin-bottom: 5%;  /* 👈 add space below card */
+  z-index: 2;
+}
+
+/* Ensure no horizontal scroll */
+html, body {
+  overflow-x: hidden;   /* 👈 kill unwanted horizontal scrollbar */
+}
+
+/* Make sure card never exceeds viewport width */
+.card {
+  width: min(1150px, calc(100% - 48px));  /* responsive width */
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  outline: 1px solid var(--muted);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+
+/* labels on top + underline inputs exactly as in the image */
+/* Two-column → single column on smaller screens */
+.row-2col{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+}
+@media (max-width: 980px){
+  .row-2col{ grid-template-columns: 1fr; column-gap: 0; }
+}
+.input-block input,
+.input-block textarea {
+  width: 100%;
+  border: none;          /* remove full box border */
+  outline: none;         /* remove focus outline */
+  background: transparent;
+  font-size: 16px;
+  color: #404040;
+  padding: 1px 0;        /* space from label to underline */
+  box-shadow: none;      /* prevent any browser shadow */
+}
+
+/* keep only underline using border-bottom on parent */
+.input-block {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 1px;
+}
+
+/* Wrap for button alignment */
+.form-actions {
+  display: flex;
+  justify-content: flex-end; /* 👈 pushes button to the right */
+}
+
+/* Button styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 50px;
+  background: var(--brown);
+  color: #FEFEFF;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  border: 0;
+  cursor: pointer;
+  font-family: "Poppins";
+}
+
+
+/* Keep overlay position as you had */
+.overlay{
+  position:absolute; left:0; right:0; bottom:270px; z-index:3; color:#fff;
+}
+
+/* Centered container */
+.overlay-inner{
+  width: min(1100px, calc(100% - 48px));
+  margin: 130px auto;
+}
+
+/* 3 items: auto-width columns, centered, with tight spacing  */
+.overlay-inner.details-3up{
+  display: grid;
+  grid-auto-flow: column;              /* lay out items in columns */
+  grid-auto-columns: max-content;      /* columns fit content width */
+  justify-content: center;             /* center the whole group */
+  column-gap: 140px;                    /* 👈 spacing BETWEEN blocks */
+  row-gap: 0;
+  text-align: center;
+}
+
+/* Icon above, text below with very small gap */
+.detail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3px;                        /* 👈 spacing INSIDE each block */
+  color: var(--cream);
+}
+
+.detail i{
+  font-size: 25px;
+  line-height: 1.9;
+  color: #fff;
+}
+
+.detail span{
+  font-size: 16px;
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+/* Stack on small screens */
+@media (max-width: 780px){
+  .overlay-inner.details-3up{
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
+}
+
+
+.input-block label{ display:block; font-size:16px; line-height:30px; font-weight:400; color:#404040; margin-bottom:10px; }
+/* responsiveness to keep the same spirit on small screens */
+@media (max-width:1280px){
+  .overlay-inner,.card{ width:calc(100% - 252px); }
+}
+@media (max-width:980px){
+  .page-head{ max-width:92%; width:auto }
+  .page-sub{ max-width:92%; width:auto }
+  .overlay-inner{ grid-template-columns:1fr; row-gap:16px }
+  .row-2col{ grid-template-columns:1fr; column-gap:0 }
+}
+@media (max-width:640px){
+  .hero{ height:420px }
+  .card{ padding:48px 28px }
+}
+
+/* Kill horizontal overflow without breaking navbar behavior */
+html { overflow-x: visible; }   /* ayaw i-hidden ang viewport */
+body { margin:0; padding:0; width:100%; overflow-x: hidden; }  /* supress overflow sa body lang */
+
+/* Custom popup alert */
+/* ---- alert (only for error fallback) ---- */
+.alert{ padding:12px 14px; border-radius:10px; margin:12px 0; }
+.alert.err{ background:#fdeaea; border:1px solid #f3b3b3; }
+
+/* ===== Success Modal ===== */
+.modal-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.45); display:none;
+  align-items:center; justify-content:center; z-index:9999;
+}
+.modal{
+  width:min(480px, calc(100% - 48px));
+  background:#fff; border-radius:18px; box-shadow:0 25px 60px rgba(0,0,0,.25);
+  padding:22px; text-align:center;
+}
+.modal .icon-wrap{
+  width:72px; height:72px; margin:8px auto 12px; border-radius:999px;
+  display:grid; place-items:center; background:#eaf4ea; /* soft green */
+}
+.modal h3{ margin:6px 0 6px; font-size:18px; }
+.modal p{ margin:0 0 14px; color:#555; }
+.modal .actions{ display:flex; justify-content:center; gap:10px; }
+.modal .btn{
+  padding:10px 18px; border-radius:10px; font-weight:600;
+}
+.modal .btn.ok{
+  background:var(--olive); color:#fff;
+}
+.modal .btn.ok:hover{ filter:brightness(.95); }
+
+.modal-backdrop.show{ display:flex; }
+
+#message{
+  font-family:Poppins, sans-serif;
+}
