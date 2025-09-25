@@ -1,0 +1,197 @@
+:root{
+  --olive:#364025; --muted:#6b6b6b; --paper:#ffffff; --bg:#f1f1f1;
+  --radius:12px; --radius-lg:18px;
+  --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  font:14px/1.45 Poppins, sans-serif;
+  color:#222;
+}
+
+.admin-shell{
+  display:block;
+  min-height:100dvh;
+  padding:18px;
+}
+.admin-aside{
+  position: fixed;
+  left: 18px;
+  top: 18px;
+  bottom: 18px;
+  width: 260px;
+  overflow: auto;
+  z-index: 10;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:var(--radius);
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.admin-main{
+  margin-left: calc(310px); 
+  margin-top: -12px;
+}
+
+.aside-user{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px}
+.aside-user img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.aside-user .name{font-weight:600}
+
+.aside-nav{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.aside-link{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:10px;color:#333;text-decoration:none;
+  border:1px solid #eee;background:#fff
+}
+.aside-link:hover{background:#f7f7f7}
+.aside-link.active{background:#ecf0e7;border-color:#e1e8d9;color:#222}
+.aside-link i{font-size:16px;color:#8a8a8a}
+
+.aside-footer{margin-top:auto}
+.brand-pill{
+  display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;
+  background:#fff;border:1px solid #eee;border-radius:10px;padding:12px;text-align:center
+}
+.brand-pill small{color:#9a9a9a}
+
+.card, .main-card{
+  border:1px solid #e8e8e8;
+  border-radius:var(--radius-lg);
+  padding:18px;
+  margin:14px 0;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+@media (max-width: 960px){
+  .admin-aside{
+    position: static;
+    width: auto;
+    height: auto;
+    left:auto; top:auto; bottom:auto;
+  }
+  .admin-main{
+    margin-left: 0;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.alert{
+  display:flex; align-items:center; gap:8px;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #e8e8e8;
+  background:#f9faf8;
+  margin:12px 0;
+}
+.alert-success{
+  border-left:4px solid var(--olive);
+  background:#eef3ea;
+}
+.alert-danger{
+  border-left:4px solid #d9534f;
+  background:#fbefef;
+}
+.me-2{ margin-right:8px }           
+.d-flex{ display:flex }
+.align-items-center{ align-items:center }
+
+.admin-main .main-card h5{
+  display:flex; align-items:center; gap:8px;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  color:#222;
+}
+
+.avatar-box{
+  display:flex; gap:14px; align-items:center;
+  padding: 8px 10px;
+  border-radius:12px;
+}
+.avatar-box img{
+  width:90px; height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  border:1px solid #e1e1e1;
+}
+
+.row{ display:grid; grid-template-columns: repeat(12, 1fr); gap:12px }
+.g-3{ gap:12px }
+.col-12{ grid-column: 1 / -1 }
+.col-md-6{ grid-column: span 6 }
+.col-md-4{ grid-column: span 4 }
+
+@media (max-width: 960px){
+  .col-md-6, .col-md-4{ grid-column: 1 / -1 }
+  .avatar-box{ flex-direction:column; align-items:flex-start }
+  .avatar-box img{ width:72px; height:72px }
+}
+
+.form-label{
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  color:#555;
+  margin: 4px 0 6px;
+}
+.form-control{
+  display:block;
+  width:90%;
+  padding:10px 12px;
+  border:1px solid #e1e1e1;
+  border-radius:10px;
+  background:#fff;
+  font: 14px/1.45 Poppins, sans-serif;
+  color:#222;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.form-control:hover{
+  border-color:#d6d6d6;
+  background:#fcfcfc;
+}
+.form-control:focus{
+  outline:none;
+  border-color:#c8d3bd;
+  box-shadow: 0 0 0 4px rgba(54,64,37,.10);
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid transparent;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .06s ease, filter .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:active{ transform: translateY(1px) }
+
+.btn-dark{
+  background: var(--olive);
+  color:#fff;
+  border-color: var(--olive);
+}
+.btn-dark:hover{ filter: brightness(1.05) }
+
+.btn-outline-secondary{
+  background:#fff;
+  color:#333;
+  border-color:#dcdcdc;
+}
+.btn-outline-secondary:hover{
+  background:#f6f6f6;
+  border-color:#cfcfcf;
+}
+
+.col-12 .btn + .btn{ margin-left:8px }
+
+.btn i{ font-size:16px; line-height:0 }
+
+.admin-main .main-card + .main-card{ margin-top: 18px }

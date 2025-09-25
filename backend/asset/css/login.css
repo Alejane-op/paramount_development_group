@@ -1,0 +1,129 @@
+:root{
+  --olive:#364025;         
+  --paper:#ffffff;         
+  --ink:#2a2a2a;           
+  --muted:#6b6b6b;         
+  --line:#dcdcdc;          
+  --accent:#4B3D1A;        
+  --accent-press:#3e3317; 
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.20);
+}
+
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+
+body{
+  margin:0;
+  background:var(--olive);
+  color:var(--ink);
+  font:14px/1.6 "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.login-page{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;              
+  padding:24px;
+}
+
+.login-page .card{
+  width:100%;
+  max-width:520px;                 
+  background:var(--paper);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:42px 46px 36px;
+}
+
+.brand{
+  display:block;
+  width:250px;
+  height:220px;
+  margin:0 auto 10px auto;
+  margin-top: -50px;
+  margin-bottom: -45px;        
+}
+
+.subtitle{
+  text-align:center;
+  color:var(--olive);
+  margin:0 0 26px 0;
+  font-size: 20px;
+  font-weight:500;
+}
+
+.field{ display:block; margin:18px 0 8px; }
+.field-label{
+  display:block;
+  font-size:16px;
+  color:#7a7a7a;
+  margin:0 0 6px;
+}
+
+.field input[type="email"],
+.field input[type="password"]{
+  width:100%;
+  border:none;
+  border-bottom:1px solid var(--line);
+  outline:0;
+  padding:8px 4px 10px;
+  font:inherit;
+  background:transparent;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+
+.field input:focus{
+  border-bottom-color:#9bb08b;    
+  box-shadow:0 2px 0 0 #9bb08b;
+}
+
+.login-page .remember{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:8px 0 18px;
+  color:#555;
+  user-select:none;
+}
+
+.login-page .remember input[type="checkbox"]{
+  width:16px; height:16px;
+  accent-color:#899064;           
+}
+
+.btn{
+  display:inline-block;
+  width:140px;
+  padding:12px 16px;
+  border:0;
+  border-radius:8px;
+  background:var(--accent);
+  color:#fff;
+  font-size: 15px;
+  font-weight:500;
+  cursor:pointer;
+  transition:transform .08s ease, filter .18s ease, background .18s ease;
+}
+
+.btn-container {
+  text-align: center;  
+}
+
+.btn:hover{ filter:brightness(1.05); }
+.btn:active{ transform:translateY(1px); background:var(--accent-press); }
+
+.msg.error{
+  background:#fff2f2;
+  border:1px solid #ffdede;
+  color:#8a1f1f;
+  border-radius:10px;
+  padding:10px 12px;
+  margin:0 0 16px;
+}
+.msg.error ul{ margin:0; padding-left:18px; }
+
+@media (max-width: 480px){
+  .login-page .card{ padding:30px 24px 26px; }
+  .brand{ width:104px; }
+}
