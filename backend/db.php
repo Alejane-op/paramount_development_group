@@ -1,9 +1,9 @@
 <?php
 
-$DB_HOST    = 'localhost';            
-$DB_NAME    = 'paramount_database';   
-$DB_USER    = 'root';                 
-$DB_PASS    = '';                     
+$DB_HOST    = 'db.fr-pari1.bengt.wasmernet.com';            
+$DB_NAME    = 'paramount_development';   
+$DB_USER    = '4c4349ab7ee780005fa00c4259bd';                 
+$DB_PASS    = '068d4c43-49ac-70e6-8000-21098491a8dd';                     
 $DB_CHARSET = 'utf8mb4';
 
 $dsn = "mysql:host={$DB_HOST};dbname={$DB_NAME};charset={$DB_CHARSET}";
